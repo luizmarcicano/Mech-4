@@ -2,7 +2,7 @@
 
 ### 🗨️ College 5th period project in group, the goal is to develop a functional system front to back, with guidelines and platforms defined by the teacher
 
-![Alt Text](http://gph.is/Z1Qfy8)
+![Alt Text](https://media.giphy.com/media/yDwOH0MVWY61a/giphy.gif)
 
 ## Team :adult: :curly_haired_man: :bearded_person: :girl:
 - Felipe Macedo
