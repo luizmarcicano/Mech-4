@@ -4,7 +4,7 @@
 
 ![Alt Text](https://media.giphy.com/media/yDwOH0MVWY61a/giphy.gif)
 
-## Team :adult: :curly_haired_man: :bearded_person: :girl:
+## Team :bearded_person: :girl: :curly_haired_man:  :adult: 
 - Felipe Macedo
   - [Github]()
   - [LinkedIn]()
