@@ -4,6 +4,8 @@
 
 ![Alt Text](https://media.giphy.com/media/yDwOH0MVWY61a/giphy.gif)
 
+#### You can check our line of thinking through [Trello](https://trello.com/b/2301Yto0/mech-4-project)
+
 ## Team :bearded_person: :girl:  	:child:  :adult: 
 - Felipe Macedo
   - [Github]()
