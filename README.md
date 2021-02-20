@@ -9,7 +9,7 @@
 ## Team :bearded_person: :girl:  	:child:  :adult: 
 - Felipe Macedo
   - [Github]()
-  - [LinkedIn]()
+  - [LinkedIn](https://www.linkedin.com/in/felipe-silva-macedo-a6850118a/)
 - Heloisa Prado
   - [Github]()
   - [LinkedIn]()
