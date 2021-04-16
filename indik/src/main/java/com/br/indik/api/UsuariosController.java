@@ -24,30 +24,25 @@ import com.br.indik.domain.UsuarioService;
 import com.br.indik.domain.dto.UsuarioDTO;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/usuarios")
 public class UsuariosController {
 
 	@Autowired
 	private UsuarioService service;
 
 	@GetMapping()
-	public String getWelcome() {
-		return "Hello World";
-	}
-	
-	@GetMapping("/usuarios")
 	public ResponseEntity getUser() {
 		return ResponseEntity.ok(service.getUsuarios());
 	}
 
-	@GetMapping("/usuarios/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity getUserById(@PathVariable("id") Long id) {
 		UsuarioDTO usuarioDTO = service.getUsuariosById(id);
 
 		return ResponseEntity.ok(usuarioDTO);
 	}
 
-	@GetMapping("/usuarios/username/{username}")
+	@GetMapping("/username/{username}")
 	public ResponseEntity getUserByUsername(@PathVariable("username") String username) {
 		List<UsuarioDTO> usuarios = service.getUsuariosByUsername(username);
 
@@ -68,7 +63,7 @@ public class UsuariosController {
 		return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
 	}
 
-	@PutMapping("/usuarios/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity putUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
 
 		usuario.setId(id);
@@ -78,7 +73,7 @@ public class UsuariosController {
 		return userDTO != null ? ResponseEntity.ok(userDTO) : ResponseEntity.notFound().build();
 	}
 
-	@DeleteMapping("/usuarios/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity delete(@PathVariable("id") Long id) {
 		service.delete(id);
 
