@@ -18,7 +18,7 @@ function fazPost(url, body){
 
 function cadastrarUsuario(){
     event.preventDefault()
-    let url = "http://localhost:8080/api/v1/usuarios/";
+    let url = "https://projeto-indik.herokuapp.com/api/v1/usuarios/";
     let nomeCompleto = document.getElementById('nomeCompleto').value
     let cidade = document.getElementById('cidade').value
     let estado = document.getElementById('estado').value
