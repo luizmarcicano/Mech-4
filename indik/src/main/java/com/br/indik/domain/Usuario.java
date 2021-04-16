@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Entity
@@ -35,6 +39,8 @@ public class Usuario {
 	@Column
 	private String senha;
 
+	@DateTimeFormat (pattern = "Yyyy-mm-dd HH:mm:ss")
+    @JsonFormat (pattern = "Yyyy-mm-dd HH:mm:ss")
 	@Column(name = "dt_nascimento")
 	private Date dataNascimento;
 
