@@ -22,21 +22,7 @@ public class IndexController {
 	public String postCadastro(@RequestParam("id") Long id, @RequestParam("nome") String nome) {
 		return "Usuário " + id;
 	}
-	
-	@RequestMapping("/")
-	public String index(){
-		return "login";
-	}
-	
-	@RequestMapping(value = "/cadastrarUsuario", method =RequestMethod.GET)
-	public String cadastro(){
-		return "cadastro";
-	}
-	
-	@RequestMapping(value = "/cadastrarUsuario", method =RequestMethod.POST)
-	public String formulario(){
-		return "redirect:/";
-	}
+
 	
 	//@RequestParam("id")Long id,@RequestParam("nomeCompleto")String nomeCompleto,@RequestParam("cidade")String cidade, @RequestParam("estado")String estado, @RequestParam("dataNascimento")Date dataNascimento, @RequestParam("username")String username, @RequestParam("senha")String senha
 }
