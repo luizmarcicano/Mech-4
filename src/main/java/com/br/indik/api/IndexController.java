@@ -16,15 +16,4 @@ public class IndexController {
 	public String index(){
 		return "cadastro";
 	}
-	
-	@RequestMapping(value = "/cadastrarUsuario", method =RequestMethod.GET)
-	public String cadastro(){
-		return "cadastro";
-	}
-	
-	@RequestMapping(value = "/cadastrarUsuario", method =RequestMethod.POST)
-	public String formulario(){
-		return "redirect:/";
-	}
-	//@RequestParam("id")Long id,@RequestParam("nomeCompleto")String nomeCompleto,@RequestParam("cidade")String cidade, @RequestParam("estado")String estado, @RequestParam("dataNascimento")Date dataNascimento, @RequestParam("username")String username, @RequestParam("senha")String senha
 }
