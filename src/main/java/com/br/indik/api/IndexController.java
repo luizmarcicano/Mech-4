@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String index(){
 		return "index";
 	}
