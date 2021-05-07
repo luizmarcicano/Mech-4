@@ -10,12 +10,16 @@ public class IndexController {
 	public String index(){
 		return "index";
 	}
-	@RequestMapping("/uau")
-	public String tentativa(){
-		return "index";
+	@RequestMapping("/login")
+	public String login(){
+		return "login";
 	}
-	@RequestMapping(value="/hm", method= RequestMethod.GET)
-	public String mds(){
-		return "index";
+	@RequestMapping(value="/cadastro", method= RequestMethod.GET)
+	public String cadastro(){
+		return "cadastro";
+	}
+	@RequestMapping(value="/cadastro", method= RequestMethod.POST)
+	public String cadastrado(){
+		return "redirect:cadastro";
 	}
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="br" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Indik</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet"
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+        <script src="js/api.js"></script>
+
+        <form class="form-signin" onsubmit="cadastrarUsuario()">
+            <h2 class="form-signin-heading" style="text-align:center;">Cadastro</h2>
+            <br>
+            <p>
+                <label for="username" class="sr-only">Nome completo</label>
+                <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-control" placeholder="Nome completo"
+                    required autofocus>
+            </p>
+            <p>
+                <label for="cidade" class="sr-only">Cidade</label>
+                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" required
+                    autofocus>
+            </p>
+            <p>
+                <label for="estado" class="sr-only">Estado</label>
+                <input type="text" id="estado" name="estado" class="form-control" placeholder="Estado" required
+                    autofocus>
+            </p>
+            <p>
+                <label for="dataNascimento" class="sr-only">Data de Nascimento</label>
+                <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="Data de Nascimento" required
+                    autofocus>
+            </p>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
+                    autofocus>
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Senha"
+                    required>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Cadastrar</button>
+        </form>
+    </div>
+</body>
+
+</html>
