@@ -6,8 +6,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
-	@RequestMapping(value="/index", method= RequestMethod.GET)
+	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(){
+		return "index";
+	}
+	@RequestMapping("/uau")
+	public String tentativa(){
+		return "index";
+	}
+	@RequestMapping(value="/hm", method= RequestMethod.GET)
+	public String mds(){
 		return "index";
 	}
 }
