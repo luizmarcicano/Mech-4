@@ -14,12 +14,16 @@ public class IndexController {
 	public String login(){
 		return "login";
 	}
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String homepage(){
+		return "homepage";
+	}
 	@RequestMapping(value="/cadastro", method= RequestMethod.GET)
 	public String cadastro(){
 		return "cadastro";
 	}
 	@RequestMapping(value="/cadastro", method= RequestMethod.POST)
 	public String cadastrado(){
-		return "redirect:cadastro";
+		return "login";
 	}
 }
