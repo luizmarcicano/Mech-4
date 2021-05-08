@@ -6,18 +6,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class IndexController {
+
 	@RequestMapping(value="/", method= RequestMethod.GET)
 	public String index(){
 		return "index";
 	}
+
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(){
 		return "login";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String logar(){
+		return "homepage";
+	}
+	
+	
+	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String homepage(){
 		return "homepage";
 	}
+	
+	
 	@RequestMapping(value="/cadastro", method= RequestMethod.GET)
 	public String cadastro(){
 		return "cadastro";
@@ -25,5 +36,15 @@ public class IndexController {
 	@RequestMapping(value="/cadastro", method= RequestMethod.POST)
 	public String cadastrado(){
 		return "login";
+	}
+	
+
+	@RequestMapping(value="/form", method= RequestMethod.GET)
+	public String avaliar(){
+		return "formReview";
+	}
+	@RequestMapping(value="/form", method= RequestMethod.POST)
+	public String novoPost(){
+		return "homepage";
 	}
 }

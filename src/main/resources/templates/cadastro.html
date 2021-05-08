@@ -17,7 +17,7 @@
     <div class="container">
         <script src="js/api.js"></script>
 
-        <form class="form-signin" onsubmit="cadastrarUsuario()">
+        <form class="form-signin">
             <h2 class="form-signin-heading" style="text-align:center;">Cadastro</h2>
             <br>
             <p>
@@ -50,7 +50,7 @@
                 <input type="password" id="password" name="password" class="form-control" placeholder="Senha"
                     required>
             </p>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="cadastrarUsuario(); window.location.href='https://projeto-indik.herokuapp.com/login';">Cadastrar</button>
         </form>
     </div>
 </body>
