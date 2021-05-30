@@ -53,7 +53,7 @@
 	
 	var tipo = document.getElementById("tipo").value;
 	if (tipo == "filme"){
-		let url = "http://localhost:8080/api/v1/filmes/";
+		let url = "https://projeto-indik.herokuapp.com/api/v1/filmes/";
 		let titulo = document.getElementById('titulo').value
 		let diretor = document.getElementById('owner').value
 		let ano = document.getElementById('ano').value
@@ -93,7 +93,7 @@
 		
 	} else if (tipo == "livro"){
 		console.log("")
-		let url = "http://localhost:8080/api/v1/livros/";
+		let url = "https://projeto-indik.herokuapp.com/api/v1/livros/";
 		let titulo = document.getElementById('titulo').value
 		let autor = document.getElementById('owner').value
 		let ano = document.getElementById('ano').value
@@ -129,7 +129,7 @@
 		
 	}
 	else if (tipo == "serie"){
-		let url = "http://localhost:8080/api/v1/series/";
+		let url = "https://projeto-indik.herokuapp.com/api/v1/series/";
 		let titulo = document.getElementById('titulo').value
 		let diretor = document.getElementById('owner').value
 		let ano = document.getElementById('ano').value
