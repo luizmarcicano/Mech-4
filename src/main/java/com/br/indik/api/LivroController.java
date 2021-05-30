@@ -19,59 +19,58 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.br.indik.domain.Usuario;
-import com.br.indik.domain.UsuarioService;
-import com.br.indik.domain.dto.UsuarioDTO;
+
+import com.br.indik.domain.Livro;
+import com.br.indik.domain.LivroService;
+import com.br.indik.domain.dto.LivroDTO;
+
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
-public class UsuariosController {
+@RequestMapping("/api/v1/livros")
+public class LivroController {
 
 	@Autowired
-	private UsuarioService service;
+	private LivroService service;
 
 	@GetMapping()
-	public ResponseEntity getUser() {
-		return ResponseEntity.ok(service.getUsuarios());
+	public ResponseEntity getLivro() {
+		return ResponseEntity.ok(service.getLivros());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity getUserById(@PathVariable("id") Long id) {
-		UsuarioDTO usuarioDTO = service.getUsuariosById(id);
+	public ResponseEntity getLivroById(@PathVariable("id") Long id) {
+		LivroDTO livroDTO = service.getLivrosById(id);
 
-		return ResponseEntity.ok(usuarioDTO);
+		return ResponseEntity.ok(livroDTO);
 	}
 
-	@GetMapping("/username/{username}")
-	public ResponseEntity getUserByUsername(@PathVariable("username") String username) {
-		List<UsuarioDTO> usuarios = service.getUsuariosByUsername(username);
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity getLivroByTitulo(@PathVariable("titulo") String titulo) {
+		List<LivroDTO> livros = service.getLivrosByTitulo(titulo);
 
-		return usuarios.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(usuarios);
+		return livros.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(livros);
 	}
 
 	@PostMapping
-	public ResponseEntity postUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity postLivro(@RequestBody Livro livro) {
+		LivroDTO livroDTO = service.insert(livro);
 
-		UsuarioDTO usuarioDTO = service.insert(usuario);
-
-		URI location = getUri(usuarioDTO.getId());
+		URI location = getUri(livroDTO.getId());
 		return ResponseEntity.created(location).build();
-
 	}
 	
-
 	private URI getUri(Long id) {
 		return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity putUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+	public ResponseEntity putLivro(@PathVariable("id") Long id, @RequestBody Livro livro) {
 
-		usuario.setId(id);
+		livro.setId(id);
 
-		UsuarioDTO userDTO = service.update(usuario, id);
+		LivroDTO livroDTO = service.update(livro, id);
 
-		return userDTO != null ? ResponseEntity.ok(userDTO) : ResponseEntity.notFound().build();
+		return livroDTO != null ? ResponseEntity.ok(livroDTO) : ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")

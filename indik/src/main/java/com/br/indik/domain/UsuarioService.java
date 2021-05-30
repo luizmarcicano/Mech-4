@@ -32,12 +32,6 @@ public class UsuarioService {
 	public List<UsuarioDTO> getUsuariosByUsername(String username) {
 		return rep.findByUsername(username).stream().map(UsuarioDTO::create).collect(Collectors.toList());
 	}
-	
-	public boolean login(Usuario usuario) {
-		rep.findByUsername(usuario.getUsername()).stream().map(UsuarioDTO::create).collect(Collectors.toList());
-		rep.findByUsername(usuario.getSenha()).stream().map(UsuarioDTO::create).collect(Collectors.toList());
-		return true;
-	}
 
 	public Usuario save(Usuario usuario) {
 		return rep.save(usuario);

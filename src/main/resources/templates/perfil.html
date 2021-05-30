@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Indik</title>
+    <meta charset="utf-8"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light" style="display: flex;   flex-wrap: nowrap;  justify-content: center;">
+            <span class="navbar-brand mb-0 h1" style="font-size: 28px; font-weight: bold; margin: 0% 0%;">Indik</span>
+            <button class="btn btn-primary" onclick="window.location.href='/alterarperfil';" style="margin: 0% 2% 0% 5%;  white-space: nowrap; ">Alterar Perfil</button>
+            <a href="/midias" class="navbar-brand mb-0 h1" style="margin: 0% 0%; font-size: 20px;">Mídias</a>
+            	<div class="input-group mb-3" style="margin: 1.5% 10%; padding-top: 0px; ">
+					<input type="text" id="titulo" class="form-control" placeholder="Pesquise....">
+  					<button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar</button>
+  					
+				</div>
+            <button class="btn btn-primary" onclick="window.location.href='/form';" style="margin: 1% 0%;  white-space: nowrap; ">Avaliar Mídia</button>
+            
+        </nav>
+    </header>
+
+    <section>
+    <div class="container"  style="width: 60%; padding-bottom: 30px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item active" aria-current="page">Reviews</li>
+            </ol>
+        </nav>
+    </div>
+    </section>
+</body>
+</html>

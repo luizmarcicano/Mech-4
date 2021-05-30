@@ -19,42 +19,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.br.indik.domain.Usuario;
-import com.br.indik.domain.UsuarioService;
-import com.br.indik.domain.dto.UsuarioDTO;
+import com.br.indik.domain.Filme;
+import com.br.indik.domain.FilmeService;
+import com.br.indik.domain.dto.FilmeDTO;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
-public class UsuariosController {
+@RequestMapping("/api/v1/filmes")
+public class FilmeController{
 
 	@Autowired
-	private UsuarioService service;
+	private FilmeService service;
 
 	@GetMapping()
-	public ResponseEntity getUser() {
-		return ResponseEntity.ok(service.getUsuarios());
+	public ResponseEntity getFilme() {
+		return ResponseEntity.ok(service.getFilmes());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity getUserById(@PathVariable("id") Long id) {
-		UsuarioDTO usuarioDTO = service.getUsuariosById(id);
+	public ResponseEntity getFilmeById(@PathVariable("id") Long id) {
+		FilmeDTO filmeDTO = service.getFilmesById(id);
 
-		return ResponseEntity.ok(usuarioDTO);
+		return ResponseEntity.ok(filmeDTO);
 	}
 
-	@GetMapping("/username/{username}")
-	public ResponseEntity getUserByUsername(@PathVariable("username") String username) {
-		List<UsuarioDTO> usuarios = service.getUsuariosByUsername(username);
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity getFilmeByTitulo(@PathVariable("titulo") String titulo) {
+		List<FilmeDTO> filmes = service.getFilmesByTitulo(titulo);
 
-		return usuarios.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(usuarios);
+		return filmes.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(filmes);
 	}
 
 	@PostMapping
-	public ResponseEntity postUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity postFilme(@RequestBody Filme filme) {
+		FilmeDTO filmeDTO = service.insert(filme);
 
-		UsuarioDTO usuarioDTO = service.insert(usuario);
-
-		URI location = getUri(usuarioDTO.getId());
+		URI location = getUri(filmeDTO.getId());
 		return ResponseEntity.created(location).build();
 
 	}
@@ -65,13 +64,13 @@ public class UsuariosController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity putUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+	public ResponseEntity putFilme(@PathVariable("id") Long id, @RequestBody Filme filme) {
 
-		usuario.setId(id);
+		filme.setId(id);
 
-		UsuarioDTO userDTO = service.update(usuario, id);
+		FilmeDTO filmeDTO = service.update(filme, id);
 
-		return userDTO != null ? ResponseEntity.ok(userDTO) : ResponseEntity.notFound().build();
+		return filmeDTO != null ? ResponseEntity.ok(filmeDTO) : ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")

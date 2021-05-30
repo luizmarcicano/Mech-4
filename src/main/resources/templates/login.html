@@ -14,23 +14,31 @@
 </head>
 
 <body>
+
+
+    <script>
+        function cadastrase(){
+            window.location.href="http://localhost:8080/cadastro";
+        }
+    </script>
+
+
+
     <div class="container">
-        <form class="form-signin" method="post" action="/login">
+        <form class="form-signin" method="post" onsubmit="window.location.href = 'http://localhost:8080/homepage';">
             <h2 class="form-signin-heading" style="text-align:center;">Login</h2>
             <br>
             <p>
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
-                    autofocus>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
             </p>
             <p>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Senha"
-                    required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
             </p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             <br>
-            <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href='https://projeto-indik.herokuapp.com/cadastro';">Cadastrar-se</button>
+            <button class="btn btn-lg btn-primary btn-block" onclick="cadastrase()">Cadastrar-se</button>
         </form>
     </div>
 </body>

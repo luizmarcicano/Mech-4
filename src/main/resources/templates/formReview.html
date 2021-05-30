@@ -5,17 +5,177 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<meta charset="utf-8"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
 </head>
 <body>
 
+<script>
+
+	function reformula() {
+		var tipo = document.getElementById("tipo").value;
+		if (tipo == "filme"){
+			document.getElementById("owner").placeholder = "Diretor *";
+			document.getElementById("complementar").innerHTML = "<input type='text' class='form-control' id='elenco' placeholder='Elenco Principal *' required>";
+		} else if (tipo == "livro"){
+			document.getElementById("owner").placeholder = "Autor *";
+			document.getElementById("complementar").innerHTML = "<input type='text' class='form-control' id='editora' placeholder='Editora *' required>";
+		}
+		else if (tipo == "serie"){
+			document.getElementById("owner").placeholder = "Diretor *";
+			document.getElementById("complementar").innerHTML = "<div class='form-group'><input type='text' class='form-control' id='elenco' placeholder='Elenco Principal *' required> </div><div class='form-group'><input type='number' max='99' class='form-control' id='temp' placeholder='Número de Temporadas *' style='-webkit-appearance: none; -moz-appearance: textfield;' required></div>";
+		} else if (tipo == "Escolha uma opção") {
+			document.getElementById("owner").placeholder = "Autor *";
+			document.getElementById("complementar").innerHTML = "";
+		}
+			
+	}
+
+	function fazPost(url, body){
+	console.log("Body=", body)
+	
+	let request = new XMLHttpRequest()
+	request.open("POST", url, true)
+	request.setRequestHeader("Content-Type", "application/json")
+	request.send(JSON.stringify(body))
+	
+	request.onload = function(){
+	console.log(this.responseText)
+	}
+	return request.responseText
+	}
+	
+	function cadastrarMidia(){
+	event.preventDefault()
+	
+	var tipo = document.getElementById("tipo").value;
+	if (tipo == "filme"){
+		let url = "http://localhost:8080/api/v1/filmes/";
+		let titulo = document.getElementById('titulo').value
+		let diretor = document.getElementById('owner').value
+		let ano = document.getElementById('ano').value
+		let pais = document.getElementById('pais').value
+		let texto = document.getElementById('summernote').value
+		let elenco = document.getElementById('elenco').value
+		let nota = document.getElementById('nota').value
+		
+		
+		console.log(titulo)
+		console.log(diretor)
+		console.log(ano)
+		console.log(pais)
+		console.log(texto)
+		console.log(elenco)
+		console.log(nota)
+		
+
+		
+		body = {
+		"titulo": titulo,
+		"ano": ano,
+		"diretor": diretor,
+		"pais": pais,
+		"elenco": elenco
+		}
+		
+		body2 = {
+			"texto": texto,
+			"nota": nota
+		}
+		
+		fazPost(url, body)
+		//let url = "http://localhost:8080/api/v1/avaliacao_filme/";
+		//fazPost(url,body2)
+		setTimeout("location.href = '/home';",500);
+		
+	} else if (tipo == "livro"){
+		console.log("")
+		let url = "http://localhost:8080/api/v1/livros/";
+		let titulo = document.getElementById('titulo').value
+		let autor = document.getElementById('owner').value
+		let ano = document.getElementById('ano').value
+		let pais = document.getElementById('pais').value
+		let texto = document.getElementById('summernote').value
+		let editora = document.getElementById('editora').value
+		let nota = document.getElementById('nota').value
+		
+		console.log(titulo)
+		console.log(autor)
+		console.log(ano)
+		console.log(pais)
+		console.log(texto)
+		console.log(editora)
+		console.log(nota)
+
+		
+		body = {
+		"titulo": titulo,
+		"ano": ano,
+		"autor": autor,
+		"pais": pais,
+		"editora": editora
+		}
+		
+		body2 = {
+			"texto": texto,
+			"nota": nota
+		}
+		
+		fazPost(url, body)
+		setTimeout("location.href = '/home';",500);
+		
+	}
+	else if (tipo == "serie"){
+		let url = "http://localhost:8080/api/v1/series/";
+		let titulo = document.getElementById('titulo').value
+		let diretor = document.getElementById('owner').value
+		let ano = document.getElementById('ano').value
+		let pais = document.getElementById('pais').value
+		let texto = document.getElementById('summernote').value
+		let elenco = document.getElementById('elenco').value
+		let nota = document.getElementById('nota').value
+		let temp = document.getElementById('temp').value
+		
+		console.log(titulo)
+		console.log(diretor)
+		console.log(ano)
+		console.log(pais)
+		console.log(texto)
+		console.log(elenco)
+		console.log(nota)
+		console.log(temp)
+		
+
+		
+		body = {
+		"titulo": titulo,
+		"ano": ano,
+		"diretor": diretor,
+		"pais": pais,
+		"elenco": elenco,
+		"temp": temp
+		}
+		
+		body2 = {
+			"texto": texto,
+			"nota": nota
+		}
+		
+		fazPost(url, body)
+		setTimeout("location.href = '/home';",500);
+		
+	} else if (tipo == "Escolha uma opção") {
+		console.log("")
+	}
+	}
+</script>
+
     <header>
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1" style="font-weight: bold;">Indik</span>
+            <a href="/home"><span class="navbar-brand mb-0 h1" style="font-weight: bold;">Indik</span></a>
         </nav>
     </header>
 
@@ -23,37 +183,63 @@
     <div class="container"  style="width: 70%;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
-                <li class="breadcrumb-item"><a href="/posts">Reviews</a></li>
+                <li class="breadcrumb-item"><a href="/home">Homepage</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Nova Review</li>
             </ol>
         </nav>
         <div>
-            <form method="post">
+            <form onsubmit="cadastrarMidia();" method="POST">
+            	<div class="input-group mb-3">
+				  <label class="input-group-text" for="inputGroupSelect01">Tipo de Mídia: </label>
+				  <select class="form-select form-control" onchange="reformula();" id="tipo">
+				    <option selected>Escolha uma opção</option>
+				    <option value="filme">Filme</option>
+				    <option value="livro">Livro</option>
+				    <option value="serie">Série</option>
+				  </select>
+				</div>
+
                 <div class="form-group">
-                    <input type="text" class="form-control" name="titulo" placeholder="Título *">
+                    <input type="text" class="form-control" id="titulo" placeholder="Título *" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="autor" placeholder="Autor *">
+                    <input type="text" class="form-control" id="owner" placeholder="Autor *" required>
                 </div>
-
-                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
-
+                <div class="form-group">
+                    <input type="number" min="1500" max="2999" class="form-control" id="ano" placeholder="Ano de Lançamento *" style="-webkit-appearance: none; -moz-appearance: textfield;" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="pais" placeholder="País de Origem *" required>
+                </div>
+				<div class="form-group" id="complementar">
+				</div>
+                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *" required></textarea>
+                <div class="form-group">
+                <br>
+                	<label class="input-group-text" for="inputGroupSelect01" id="lugar">Nota de 0 a 10: </label>
+                    <input type="range" class="form-control" id="nota" min="0" max="10" onchange="mostranota();">
+                </div>
                 <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
-                <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+                <a href="/home" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
             </form>
         </div>
     </div>
     </section>
-
-<script>
+    
+    <script>
     $('#summernote').summernote({
         placeholder: 'Texto *',
         tabsize: 2,
-        height: 300
+        height: 200
     });
-</script>
+    
+    function mostranota() {
+		var nota = document.getElementById("nota").value;
+		document.getElementById("lugar").innerHTML = "Nota de 0 a 10: " + nota;
+    }
+    </script>
 
 </body>
 </html>

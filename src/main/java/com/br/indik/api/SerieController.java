@@ -19,44 +19,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.br.indik.domain.Usuario;
-import com.br.indik.domain.UsuarioService;
-import com.br.indik.domain.dto.UsuarioDTO;
+import com.br.indik.domain.Serie;
+import com.br.indik.domain.SerieService;
+import com.br.indik.domain.dto.SerieDTO;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
-public class UsuariosController {
+@RequestMapping("/api/v1/series")
+public class SerieController{
 
 	@Autowired
-	private UsuarioService service;
+	private SerieService service;
 
 	@GetMapping()
-	public ResponseEntity getUser() {
-		return ResponseEntity.ok(service.getUsuarios());
+	public ResponseEntity getSerie() {
+		return ResponseEntity.ok(service.getSerie());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity getUserById(@PathVariable("id") Long id) {
-		UsuarioDTO usuarioDTO = service.getUsuariosById(id);
+	public ResponseEntity getSerieById(@PathVariable("id") Long id) {
+		SerieDTO serieDTO = service.getSeriesById(id);
 
-		return ResponseEntity.ok(usuarioDTO);
+		return ResponseEntity.ok(serieDTO);
 	}
 
-	@GetMapping("/username/{username}")
-	public ResponseEntity getUserByUsername(@PathVariable("username") String username) {
-		List<UsuarioDTO> usuarios = service.getUsuariosByUsername(username);
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity getSerieByTitulo(@PathVariable("titulo") String titulo) {
+		List<SerieDTO> series = service.getSeriesByTitulo(titulo);
 
-		return usuarios.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(usuarios);
+		return series.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(series);
 	}
 
 	@PostMapping
-	public ResponseEntity postUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity postSerie(@RequestBody Serie serie) {
+		SerieDTO serieDTO = service.insert(serie);
 
-		UsuarioDTO usuarioDTO = service.insert(usuario);
-
-		URI location = getUri(usuarioDTO.getId());
+		URI location = getUri(serieDTO.getId());
 		return ResponseEntity.created(location).build();
-
 	}
 	
 
@@ -65,13 +63,13 @@ public class UsuariosController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity putUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+	public ResponseEntity putSerie(@PathVariable("id") Long id, @RequestBody Serie serie) {
 
-		usuario.setId(id);
+		serie.setId(id);
 
-		UsuarioDTO userDTO = service.update(usuario, id);
+		SerieDTO serieDTO = service.update(serie, id);
 
-		return userDTO != null ? ResponseEntity.ok(userDTO) : ResponseEntity.notFound().build();
+		return serieDTO != null ? ResponseEntity.ok(serieDTO) : ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")

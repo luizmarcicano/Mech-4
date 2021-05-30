@@ -58,7 +58,6 @@ public class UsuariosController {
 		return ResponseEntity.created(location).build();
 
 	}
-	
 
 	private URI getUri(Long id) {
 		return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();

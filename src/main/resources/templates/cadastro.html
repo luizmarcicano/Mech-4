@@ -15,9 +15,61 @@
 
 <body>
     <div class="container">
-        <script src="js/api.js"></script>
+        <script>
+///////////////////////////
+//         CREATE        //
+///////////////////////////
 
-        <form class="form-signin">
+function fazPost(url, body){
+  console.log("Body=", body)
+
+  let request = new XMLHttpRequest()
+  request.open("POST", url, true)
+  request.setRequestHeader("Content-Type", "application/json")
+  request.send(JSON.stringify(body))
+
+  request.onload = function(){
+      console.log(this.responseText)
+  }
+  return request.responseText
+}
+
+function cadastrarUsuario(){
+  event.preventDefault()
+  let url = "http://localhost:8080/api/v1/usuarios/";
+  let nomeCompleto = document.getElementById('nomeCompleto').value
+  let cidade = document.getElementById('cidade').value
+  let estado = document.getElementById('estado').value
+  let username = document.getElementById('username').value
+  let senha = document.getElementById('password').value
+  let dataNascimento = document.getElementById('dataNascimento').value
+
+  console.log(nomeCompleto)
+  console.log(cidade)
+  console.log(estado)
+  console.log(username)
+  console.log(senha)
+  console.log(dataNascimento)
+
+  body = {
+      "nomeCompleto": nomeCompleto,
+      "cidade": cidade,
+      "estado": estado,
+      "username": username,
+      "senha": senha,
+      "dataNascimento": dataNascimento
+  }
+
+  fazPost(url, body)
+  setTimeout("location.href = 'http://localhost:8080/login';",500);
+
+}
+
+
+
+        </script>
+
+        <form class="form-signin" onsubmit="cadastrarUsuario();" method="POST">
             <h2 class="form-signin-heading" style="text-align:center;">Cadastro</h2>
             <br>
             <p>
@@ -27,30 +79,26 @@
             </p>
             <p>
                 <label for="cidade" class="sr-only">Cidade</label>
-                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" required
-                    autofocus>
+                <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" required>
             </p>
             <p>
                 <label for="estado" class="sr-only">Estado</label>
-                <input type="text" id="estado" name="estado" class="form-control" placeholder="Estado" required
-                    autofocus>
+                <input type="text" id="estado" name="estado" class="form-control" placeholder="Estado" required>
             </p>
             <p>
+				<p><p>
                 <label for="dataNascimento" class="sr-only">Data de Nascimento</label>
-                <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="Data de Nascimento" required
-                    autofocus>
+                <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="Data de Nascimento. Ex: 14/02/2001" required>
             </p>
             <p>
                 <label for="username" class="sr-only">Username</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
-                    autofocus>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
             </p>
             <p>
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Senha"
-                    required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
             </p>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="cadastrarUsuario(); window.location.href='https://projeto-indik.herokuapp.com/login';">Cadastrar</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
         </form>
     </div>
 </body>

@@ -39,10 +39,8 @@ public class Usuario {
 	@Column
 	private String senha;
 
-	@DateTimeFormat (pattern = "Yyyy-mm-dd HH:mm:ss")
-    @JsonFormat (pattern = "Yyyy-mm-dd HH:mm:ss")
 	@Column(name = "dt_nascimento")
-	private Date dataNascimento;
+	private String dataNascimento;
 
 	public Long getId() {
 		return id;
@@ -92,11 +90,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 }

@@ -19,7 +19,7 @@ public class UsuarioDTO {
 	private String estado;
 	private String username;
 	private String senha;
-	private Date dataNascimento;
+	private String dataNascimento;
 
 	public static UsuarioDTO create(Usuario usuario) {
 		
@@ -75,11 +75,11 @@ public class UsuarioDTO {
 		this.senha = senha;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 }
